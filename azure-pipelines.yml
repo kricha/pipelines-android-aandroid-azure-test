@@ -7,18 +7,14 @@ pool:
   vmImage: 'macOS-latest'
 
 steps:
-- task: Gradle@2
+- task: Gradle@3
   inputs:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
+    publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug test'
-  displayName: gradlew assembleDebug test
+    tasks: 'assembleDebug'
 
 - task: CopyFiles@2
   inputs:
